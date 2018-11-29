@@ -1,0 +1,26 @@
+{
+  "name": "web_config_changer",
+  "version": "1.0.0",
+  "description": "Project for web.config file changer",
+  "main": "webconfchange.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/przemekwa/web_config_changer.git"
+  },
+  "keywords": [
+    "web.config"
+  ],
+  "author": "przemekwa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/przemekwa/web_config_changer/issues"
+  },
+  "homepage": "https://github.com/przemekwa/web_config_changer#readme",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "xml2js": "^0.4.19"
+  }
+}
