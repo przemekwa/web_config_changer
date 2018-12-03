@@ -9,6 +9,8 @@ var fs = require('fs'),
     parseString = require('xml2js').parseString,
     xml2js = require('xml2js');
 
+
+
 fs.readFile('D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.Presentation\\web.config', 'utf-8', function (err, data) {
     if (err) console.log(err);
 
@@ -44,3 +46,38 @@ fs.readFile('D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.Presentation\\web.confi
         })
     });
 });       
+
+
+fs.readFile('D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.TranslationsConverter\\SelgrosPGTranslationsConverter\\App.config', 'utf-8', function (err, data) {
+    if (err) console.log(err);
+
+    parseString(data, function (err, result) {
+        if (err) console.log(err);
+        var json = result;
+
+        for (var j = 0; j < json.configuration.appSettings[0].add.length; j++) {
+            var key = json.configuration.appSettings[0].add[j].$.key;
+          
+            if (key == 'DatabaseServer') {
+
+                if (program.country == "PL") {
+                    var value = ".\\SQLEXPRESS";
+                }
+                else
+                {
+                    var value = '.\\SQLEXPRESS_'+program.country
+                }
+
+                json.configuration.appSettings[0].add[j].$.value =value;
+            }
+        }
+
+        var builder = new xml2js.Builder({ cdata: true });
+        var xml = builder.buildObject(json);
+
+        fs.writeFile('D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.TranslationsConverter\\SelgrosPGTranslationsConverter\\App.config', xml, function (err, data) {
+            if (err) console.log(err);
+            console.log("successfully written our update to App.config");
+        })
+    });
+});  
