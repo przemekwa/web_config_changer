@@ -9,9 +9,10 @@ var fs = require('fs'),
     parseString = require('xml2js').parseString,
     xml2js = require('xml2js');
 
+var pathToWebConfig = 'D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.Presentation\\web.config';
+var pathToAppConfig = 'D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.TranslationsConverter\\SelgrosPGTranslationsConverter\\App.config';
 
-
-fs.readFile('D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.Presentation\\web.config', 'utf-8', function (err, data) {
+fs.readFile(pathToWebConfig, 'utf-8', function (err, data) {
     if (err) console.log(err);
 
     parseString(data, function (err, result) {
@@ -40,7 +41,7 @@ fs.readFile('D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.Presentation\\web.confi
         var builder = new xml2js.Builder({ cdata: true });
         var xml = builder.buildObject(json);
 
-        fs.writeFile('D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.Presentation\\web.config', xml, function (err, data) {
+        fs.writeFile(pathToWebConfig, xml, function (err, data) {
             if (err) console.log(err);
             console.log("successfully written our update to web.config");
         })
@@ -48,7 +49,7 @@ fs.readFile('D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.Presentation\\web.confi
 });       
 
 
-fs.readFile('D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.TranslationsConverter\\SelgrosPGTranslationsConverter\\App.config', 'utf-8', function (err, data) {
+fs.readFile(pathToAppConfig, 'utf-8', function (err, data) {
     if (err) console.log(err);
 
     parseString(data, function (err, result) {
@@ -75,7 +76,7 @@ fs.readFile('D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.TranslationsConverter\\
         var builder = new xml2js.Builder({ cdata: true });
         var xml = builder.buildObject(json);
 
-        fs.writeFile('D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.TranslationsConverter\\SelgrosPGTranslationsConverter\\App.config', xml, function (err, data) {
+        fs.writeFile(pathToAppConfig, xml, function (err, data) {
             if (err) console.log(err);
             console.log("successfully written our update to App.config");
         })
