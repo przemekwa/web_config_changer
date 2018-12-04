@@ -5,6 +5,11 @@ program
     .option('-c, --country <aaa>', 'Country')
     .parse(process.argv);
 
+if (!program.country) {
+    console.log('No county set ');  
+    return;
+} 
+
 var fs = require('fs'),
     parseString = require('xml2js').parseString,
     xml2js = require('xml2js');
