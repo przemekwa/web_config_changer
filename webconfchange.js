@@ -14,8 +14,8 @@ var fs = require('fs'),
     parseString = require('xml2js').parseString,
     xml2js = require('xml2js');
 
-var pathToWebConfig = 'D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.Presentation\\web.config';
-var pathToAppConfig = 'D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.TranslationsConverter\\SelgrosPGTranslationsConverter\\App.config';
+    const  pathToWebConfig = 'D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.Presentation\\web.config';
+    const  pathToAppConfig = 'D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.TranslationsConverter\\SelgrosPGTranslationsConverter\\App.config';
 
 fs.readFile(pathToWebConfig, 'utf-8', function (err, data) {
     if (err) console.log(err);
