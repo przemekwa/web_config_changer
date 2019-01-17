@@ -1,8 +1,12 @@
+
+
 console.log('Web.config changer ');
 var program = require('commander');
 
+
 program
     .option('-c, --country <aaa>', 'Country')
+    .option('-B, --browserLink', 'BrowserLink')
     .parse(process.argv);
 
 if (!program.country) {
@@ -16,6 +20,16 @@ var fs = require('fs'),
 
     const  pathToWebConfig = 'D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.Presentation\\web.config';
     const  pathToAppConfig = 'D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.TranslationsConverter\\SelgrosPGTranslationsConverter\\App.config';
+
+    const pathToWebConfigWithBrowserLink = 'D:\\Projects\\Selgros\\PG\\trunk\\Utils\\Web.config'
+
+if (program.browserLink) {
+    fs.copyFile(pathToWebConfigWithBrowserLink, pathToWebConfig, (err) => {
+        if (err) throw err;
+        console.log('Web Config with browser link copy successful');
+      });
+}
+
 
 fs.readFile(pathToWebConfig, 'utf-8', function (err, data) {
     if (err) console.log(err);
