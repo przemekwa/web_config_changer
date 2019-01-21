@@ -18,18 +18,18 @@ var fs = require('fs'),
     parseString = require('xml2js').parseString,
     xml2js = require('xml2js');
 
-    const  pathToWebConfig = 'D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.Presentation\\web.config';
+    const  pathToWebConfig = 'D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.Presentation\\Web.config';
     const  pathToAppConfig = 'D:\\Projects\\Selgros\\PG\\trunk\\SelgrosPG.TranslationsConverter\\SelgrosPGTranslationsConverter\\App.config';
 
     const pathToWebConfigWithBrowserLink = 'D:\\Projects\\Selgros\\PG\\trunk\\Utils\\Web.config'
 
 if (program.browserLink) {
-    fs.copyFile(pathToWebConfigWithBrowserLink, pathToWebConfig, (err) => {
+
+    fs.copyFileSync(pathToWebConfigWithBrowserLink, pathToWebConfig, (err) => {
         if (err) throw err;
         console.log('Web Config with browser link copy successful');
       });
 }
-
 
 fs.readFile(pathToWebConfig, 'utf-8', function (err, data) {
     if (err) console.log(err);
